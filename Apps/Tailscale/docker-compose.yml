@@ -28,6 +28,6 @@ x-casaos:
   thumbnail: https://cdn.sanity.io/images/w77i7m8x/production/8e0455b2d9b33c6151016afdf2ea81d7623c2f04-1200x628.png
   title:
     en_us: tailscale
-  category: Network
+  category: LinuxServer.io
   project_url:
   port_map: '8080'
