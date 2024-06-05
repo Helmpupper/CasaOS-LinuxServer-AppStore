@@ -1,0 +1,84 @@
+name: uptime-kuma
+services:
+  uptime-kuma:
+    cpu_shares: 90
+    command:
+      - node
+      - server/server.js
+    deploy:
+      resources:
+        limits:
+          memory: 8048M
+    environment:
+      - NODE_VERSION=18.20.2
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - UPTIME_KUMA_IS_CONTAINER=1
+      - YARN_VERSION=1.22.19
+    image: louislam/uptime-kuma:latest
+    labels:
+      icon: https://uptime.kuma.pet/img/icon.svg
+    ports:
+      - target: 3001
+        published: "9090"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /var/lib/docker/volumes/uptimekuma/_data
+        target: /app/data
+    x-casaos:
+      envs:
+        - container: PATH
+          description:
+            en_us: ""
+        - container: NODE_VERSION
+          description:
+            en_us: ""
+        - container: YARN_VERSION
+          description:
+            en_us: ""
+        - container: UPTIME_KUMA_IS_CONTAINER
+          description:
+            en_us: ""
+      image: ""
+      ports:
+        - container: "3001"
+          description:
+            en_us: ""
+      volumes:
+        - container: /app/data
+          description:
+            en_us: ""
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    privileged: false
+    container_name: ""
+    hostname: ""
+x-casaos:
+  architectures:
+    - arm64
+  author: Helmpupper
+  category: Helmpupper
+  description:
+    en_us: ""
+  developer: Helmpupper
+  hostname: ""
+  icon: https://uptime.kuma.pet/img/icon.svg
+  image: null
+  index: /
+  is_uncontrolled: false
+  main: uptime-kuma
+  port_map: "9090"
+  scheme: http
+  store_app_id: uptime-kuma
+  tagline:
+    en_us: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  thumbnail: ""
+  tips:
+    custom: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  title:
+    custom: uptime-kuma
+    en_us: uptime-kuma
